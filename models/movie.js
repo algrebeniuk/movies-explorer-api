@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Schema, model } from 'mongoose';
 import validator from 'validator';
 

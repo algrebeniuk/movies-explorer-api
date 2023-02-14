@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/user.js';
+import User from '../models/user';
 
 const { JWT_SECRET } = process.env;
 
@@ -21,7 +21,7 @@ export function getUser(req, res, next) {
     });
 }
 
-export function updateUser(req, res, next) {
+export function updateUserInfo(req, res, next) {
   const { name, email } = req.body;
 
   User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })

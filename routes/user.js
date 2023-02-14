@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
+import { getUser, updateUserInfo } from '../controllers/movie';
 
 const userRouter = express.Router();
 

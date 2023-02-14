@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema({
@@ -5,6 +6,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    // eslint-disable-next-line no-useless-escape
     validate: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   },
   password: {
@@ -16,7 +18,7 @@ const userSchema = new Schema({
     type: String,
     minlength: 2,
     maxlength: 30,
-  }
+  },
 });
 
 export default model('user', userSchema);

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express, { json } from 'express';
 import { set, connect } from 'mongoose';
 

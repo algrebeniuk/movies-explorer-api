@@ -47,7 +47,7 @@ const filmSchema = new Schema({
       validator(value) {
         return validator.isURL(value);
       },
-    }
+    },
   },
   owner: {
     type: Schema.Types.ObjectId,

@@ -1,7 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
+import UnauthorizedError from '../errors/unauthorized-error.js';
+import BadRequest from '../errors/bad-request.js';
+import ConflictingRequest from '../errors/conflicting-request.js';
+import NotFoundError from '../errors/not-found-error.js';
 
 const { JWT_SECRET } = process.env;
 

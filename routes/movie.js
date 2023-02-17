@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import { getMovies, createMovie, deleteMovie } from '../controllers/movie';
 

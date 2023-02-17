@@ -3,6 +3,7 @@ import { set, connect } from 'mongoose';
 import { requestLogger, errorLogger } from './middlewares/logger';
 import auth from './middlewares/auth';
 import { login, createUser } from './controllers/user';
+import { validationOfUserSignUp, validationOfUserSignIn } from './middlewares/user-joi-validation';
 import userRouter from './routes/user';
 import movieRouter from './routes/movie';
 import CentralizedErrorHandling from './middlewares/centralized-error-handling';
@@ -17,8 +18,8 @@ connect('mongodb://127.0.0.1:27017/bitfilmsdb');
 app.use(json());
 app.use(requestLogger);
 
-app.post('/signup', createUser);
-app.post('/signin', login);
+app.post('/signup', validationOfUserSignUp, createUser);
+app.post('/signin', validationOfUserSignIn, login);
 
 app.use(auth);
 

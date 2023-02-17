@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import { set, connect } from 'mongoose';
+import auth from './middlewares/auth';
 import userRouter from './routes/user';
 import movieRouter from './routes/movie';
 import CentralizedErrorHandling from './middlewares/centralized-error-handling';
@@ -12,6 +13,8 @@ set('strictQuery', false);
 connect('mongodb://127.0.0.1:27017/bitfilmsdb');
 
 app.use(json());
+
+app.use(auth);
 
 app.use('/users', userRouter);
 app.use('/movie', movieRouter);

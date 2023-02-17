@@ -1,7 +1,7 @@
-import Movie from '../models/movie';
-import BadRequest from '../errors/bad-request';
-import NotFoundError from '../errors/not-found-error';
-import ForbiddenError from '../errors/forbidden-error';
+import Movie from '../models/movie.js';
+import BadRequest from '../errors/bad-request.js';
+import NotFoundError from '../errors/not-found-error.js';
+import ForbiddenError from '../errors/forbidden-error.js';
 
 export function getMovies(req, res, next) {
   Movie.find({ owner: req.user._id })

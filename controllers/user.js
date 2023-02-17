@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/user';
-import UnauthorizedError from '../errors/unauthorized-error';
-import BadRequest from '../errors/bad-request';
-import ConflictingRequest from '../errors/conflicting-request';
-import NotFoundError from '../errors/not-found-error';
+import User from '../models/user.js';
+import UnauthorizedError from '../errors/unauthorized-error.js';
+import BadRequest from '../errors/bad-request.js';
+import ConflictingRequest from '../errors/conflicting-request.js';
+import NotFoundError from '../errors/not-found-error.js';
 
 const { JWT_SECRET } = process.env;
 

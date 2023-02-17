@@ -1,15 +1,16 @@
 import express, { json } from 'express';
 import { set, connect } from 'mongoose';
+import { errors } from 'celebrate';
 import helmet from 'helmet';
-import { requestLogger, errorLogger } from './middlewares/logger';
-import auth from './middlewares/auth';
-import { login, createUser } from './controllers/user';
-import { validationOfUserSignUp, validationOfUserSignIn } from './middlewares/user-joi-validation';
-import userRouter from './routes/user';
-import movieRouter from './routes/movie';
-import CentralizedErrorHandling from './middlewares/centralized-error-handling';
-import NotFoundError from './errors/not-found-error';
-import limiter from './middlewares/rate-limiter';
+import limiter from './middlewares/rate-limiter.js';
+import { requestLogger, errorLogger } from './middlewares/logger.js';
+import auth from './middlewares/auth.js';
+import { login, createUser } from './controllers/user.js';
+import { validationOfUserSignUp, validationOfUserSignIn } from './middlewares/user-joi-validation.js';
+import userRouter from './routes/user.js';
+import movieRouter from './routes/movie.js';
+import CentralizedErrorHandling from './middlewares/centralized-error-handling.js';
+import NotFoundError from './errors/not-found-error.js';
 
 const { PORT = 3001 } = process.env;
 const app = express();
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 });
 
 app.use(errorLogger);
+app.use(errors());
 app.use(CentralizedErrorHandling);
 
 app.listen(PORT, () => {

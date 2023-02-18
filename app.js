@@ -1,3 +1,4 @@
+import './env.js';
 import express, { json } from 'express';
 import { set, connect } from 'mongoose';
 import { errors } from 'celebrate';

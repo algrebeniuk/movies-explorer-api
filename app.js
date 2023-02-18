@@ -12,11 +12,11 @@ import movieRouter from './routes/movie.js';
 import CentralizedErrorHandling from './middlewares/centralized-error-handling.js';
 import NotFoundError from './errors/not-found-error.js';
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3002 } = process.env;
 const app = express();
 
 set('strictQuery', false);
-connect('mongodb://127.0.0.1:27017/bitfilmsdb');
+connect('mongodb://127.0.0.1:27017/bitfilsmdb');
 
 app.use(json());
 app.use(limiter);

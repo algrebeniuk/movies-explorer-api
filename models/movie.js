@@ -67,4 +67,4 @@ const filmSchema = new Schema({
   },
 });
 
-export default model('card', filmSchema);
+export default model('movie', filmSchema);

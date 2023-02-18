@@ -17,11 +17,11 @@ export function createMovie(req, res, next) {
     year,
     description,
     image,
-    trailer,
-    nameRU,
-    nameEN,
+    trailerLink,
     thumbnail,
     movieId,
+    nameRU,
+    nameEN,
   } = req.body;
 
   Movie.create({
@@ -31,11 +31,11 @@ export function createMovie(req, res, next) {
     year,
     description,
     image,
-    trailer,
-    nameRU,
-    nameEN,
+    trailerLink,
     thumbnail,
     movieId,
+    nameRU,
+    nameEN,
     owner: req.user._id,
   })
     .then((movie) => res.send(movie))
@@ -56,7 +56,7 @@ export function deleteMovie(req, res, next) {
       if (!movie.owner.equals(req.user._id)) {
         return next(new ForbiddenError('Невозможно удалить чужой фильм'));
       }
-      return movie.remove().then(res.send({ message: 'Фильм удалена' }));
+      return movie.remove().then(res.send({ message: 'Фильм удален' }));
     })
     .catch((err) => {
       if (err.name === 'CastError') {

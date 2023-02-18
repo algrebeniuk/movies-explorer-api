@@ -3,6 +3,7 @@ import { set, connect } from 'mongoose';
 import { errors } from 'celebrate';
 import helmet from 'helmet';
 import limiter from './middlewares/rate-limiter.js';
+import cors from 'cors';
 import { requestLogger, errorLogger } from './middlewares/logger.js';
 import auth from './middlewares/auth.js';
 import { login, createUser } from './controllers/user.js';
@@ -14,6 +15,7 @@ import NotFoundError from './errors/not-found-error.js';
 
 const { PORT = 3002 } = process.env;
 const app = express();
+app.use(cors());
 
 set('strictQuery', false);
 connect('mongodb://127.0.0.1:27017/bitfilsmdb');

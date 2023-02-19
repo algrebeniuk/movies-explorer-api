@@ -56,7 +56,7 @@ export function deleteMovie(req, res, next) {
       if (!movie.owner.equals(req.user._id)) {
         return next(new ForbiddenError('Невозможно удалить чужой фильм'));
       }
-      return movie.remove().then(res.send({ message: 'Фильм удален' }));
+      return movie.remove().then(() => res.send({ message: 'Фильм удален' }));
     })
     .catch((err) => {
       if (err.name === 'CastError') {

@@ -33,6 +33,10 @@ export function updateUserInfo(req, res, next) {
         next(new BadRequest('Введены некорректные данные'));
         return;
       }
+      if (err.code === 11000) {
+        next(new ConflictingRequest('Пользователь с такой почтой уже существует'));
+        return;
+      }
       next(err);
     });
 }

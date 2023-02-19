@@ -32,7 +32,7 @@ app.post('/signin', validationOfUserSignIn, login);
 app.use(auth);
 
 app.use('/users', userRouter);
-app.use('/movie', movieRouter);
+app.use('/movies', movieRouter);
 
 app.use((req, res, next) => {
   next(new NotFoundError('File not found'));

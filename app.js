@@ -6,13 +6,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 import limiter from './middlewares/rate-limiter.js';
 import { requestLogger, errorLogger } from './middlewares/logger.js';
-import auth from './middlewares/auth.js';
-import { login, createUser } from './controllers/user.js';
-import { validationOfUserSignUp, validationOfUserSignIn } from './middlewares/user-joi-validation.js';
-import userRouter from './routes/user.js';
-import movieRouter from './routes/movie.js';
 import CentralizedErrorHandling from './middlewares/centralized-error-handling.js';
-import NotFoundError from './errors/not-found-error.js';
+import router from './routes/index.js';
 
 const {
   PORT = 3002,
@@ -28,19 +23,7 @@ app.use(json());
 app.use(limiter);
 app.use(helmet());
 app.use(requestLogger);
-
-app.post('/signup', validationOfUserSignUp, createUser);
-app.post('/signin', validationOfUserSignIn, login);
-
-app.use(auth);
-
-app.use('/users', userRouter);
-app.use('/movies', movieRouter);
-
-app.use((req, res, next) => {
-  next(new NotFoundError('File not found'));
-});
-
+app.use(router);
 app.use(errorLogger);
 app.use(errors());
 app.use(CentralizedErrorHandling);
